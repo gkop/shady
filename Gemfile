@@ -6,6 +6,9 @@ gem "sinatra"
 # mongoid ORM for mongoDB
 gem "sinatra-mongoid", :require => "sinatra/mongoid"
 
+# geolocation
+gem "geokit"
+
 # sinatra asked for this
 gem "SystemTimer"
 

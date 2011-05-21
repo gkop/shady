@@ -3,3 +3,12 @@ Shady Parking
 "A cool place to park"
 
 MIX Santa Fe Mobile Apps Challenge entry
+
+API server
+~~~~~~~~~~
+
+To bootstrap:
+  $ bundle install
+
+To start:
+  $ ruby api.rb
