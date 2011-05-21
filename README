@@ -7,6 +7,8 @@ MIX Santa Fe Mobile Apps Challenge entry
 API server
 ~~~~~~~~~~
 
+found in /api
+
 To bootstrap:
   $ bundle install
 

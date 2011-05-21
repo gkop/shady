@@ -14,3 +14,6 @@ gem "SystemTimer"
 
 # mongoDB asked for this
 gem "bson_ext"
+
+# debugger
+gem 'ruby-debug'
