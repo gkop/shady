@@ -51,9 +51,9 @@ var Shadey = {
   },
 
   loadMap: function(){
-    var latlng = new google.maps.LatLng(-34.397, 150.644);
+    var latlng = new google.maps.LatLng(35.6869444, -105.9372222);
     var myOptions = {
-      zoom: 12,
+      zoom: 18,
       center: latlng,
       mapTypeId: google.maps.MapTypeId.ROADMAP
     };
