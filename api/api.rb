@@ -27,11 +27,13 @@ end
 # GET /spots?time=x&location={y}
 # returns JSON array of location objects and scores
 
-# load saved spots
+
+
+# load 10 most recently saved spots for user
 # GET /users/:id/spots
 # returns JSON array of location objects
 
 get '/users/:id/spots' do
   user = User.find(params[:id])
-  user.spots.to_json(:except => [ :created_at, :updated_at, '_id', :user_id ])
+  user.spots.desc(:created_at).limit(10).to_json(:except => [ :created_at, :updated_at, '_id', :user_id ])
 end
