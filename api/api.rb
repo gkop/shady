@@ -14,9 +14,9 @@ require 'models/spot'
 
 post '/spots/mark' do
   # TODO somehow authenticate user
-  user_id = params[:user]
-  latitude = params[:latitude]
-  longitude = params[:longitude]
+  user_id = params[:client_id]
+  latitude = params[:lat]
+  longitude = params[:lng]
   user = User.find_or_create_by(:string_id => user_id)
   spot = Spot.create!(:location => {:latitude => latitude, :longitude => longitude}) 
   user.spots << spot
