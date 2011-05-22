@@ -6,4 +6,6 @@ class Spot
 
  # geo_index :location
 
+  referenced_in :user
+ 
 end

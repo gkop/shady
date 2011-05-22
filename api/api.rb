@@ -1,4 +1,5 @@
 require 'rubygems'
+require 'ruby-debug'
 require 'sinatra'
 require 'sinatra/mongoid'
 require 'geokit'
