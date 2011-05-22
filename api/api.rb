@@ -18,7 +18,8 @@ post '/spots/mark' do
   latitude = params[:lat]
   longitude = params[:lng]
   user = User.find_or_create_by(:string_id => user_id)
-  spot = Spot.create!(:location => {:latitude => latitude, :longitude => longitude}) 
+  spot = Spot.create!(:location => {:latitude => latitude.to_f, :longitude => longitude.to_f})
+  debugger 
   user.spots << spot
   user.save!
 end
