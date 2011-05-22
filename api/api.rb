@@ -34,6 +34,7 @@ end
 # returns JSON array of location objects
 
 get '/users/:id/spots' do
+  content_type :json
   user = User.find(params[:id])
   user.spots.desc(:created_at).limit(10).to_json(:except => [ :created_at, :updated_at, '_id', :user_id ])
 end

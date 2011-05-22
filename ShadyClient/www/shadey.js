@@ -38,15 +38,11 @@ var Shadey = {
     Shadey.updateStatus('retrieving your recents');
     $.ajax({
        type: "GET",
+       dataType:"script",
        url: "http://localhost:4567/users/" + Shadey.client_unique_id + "/spots",
        success: function(data){
          Shadey.displayRecents(data);
-       },
-      error: function(xhr, textStatus, errorThrown) {
-        console.log(xhr);
-        console.log(textStatus);
-        console.log(errorThrown);
-   }
+       }
     });
   },
 
