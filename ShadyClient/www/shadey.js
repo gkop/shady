@@ -5,7 +5,7 @@
  * Time: 10:26 AM
  */
 var Shadey = {
-  client_unique_id: 'shady_client_1',
+  client_unique_id: 'shadyclient1',
 
   initialize: function(){
     $('a#mark').click(function(e){
@@ -41,14 +41,19 @@ var Shadey = {
        url: "http://localhost:4567/users/" + Shadey.client_unique_id + "/spots",
        success: function(data){
          Shadey.displayRecents(data);
-       }
+       },
+      error: function(xhr, textStatus, errorThrown) {
+        console.log(xhr);
+        console.log(textStatus);
+        console.log(errorThrown);
+   }
     });
   },
 
   loadMap: function(){
     var latlng = new google.maps.LatLng(-34.397, 150.644);
     var myOptions = {
-      zoom: 8,
+      zoom: 12,
       center: latlng,
       mapTypeId: google.maps.MapTypeId.ROADMAP
     };
@@ -64,7 +69,7 @@ var Shadey = {
   },
 
   repositionMap: function(position){
-    Shadey.map.setCenter(new LatLng(position.coords.latitude, position.coords.longitude));
+    Shadey.map.setCenter(new google.maps.LatLng(position.coords.latitude, position.coords.longitude));
   },
 
   retrieveMarkers: function(){
