@@ -26,7 +26,7 @@ var Shadey = {
     Shadey.updateStatus('saving your location');
     $.ajax({
        type: "POST",
-       url: "http://192.168.1.167:4567/spots/mark",
+       url: "http://localhost:4567/spots/mark",
        data: "client_id=" + Shadey.client_unique_id + "&lat=" + position.coords.latitude + "&lng=" + position.coords.latitude,
        success: function(msg){
          Shadey.updateStatus('location saved');
@@ -38,7 +38,7 @@ var Shadey = {
     Shadey.updateStatus('retrieving your recents');
     $.ajax({
        type: "GET",
-       url: "http://192.168.1.167:4567/users/" + Shadey.client_unique_id + "/spots",
+       url: "http://localhost:4567/users/" + Shadey.client_unique_id + "/spots",
        success: function(data){
          Shadey.displayRecents(data);
        }
@@ -59,6 +59,12 @@ var Shadey = {
       Shadey.retrieveMarkers();
     });
 
+    Shadey.get_geo( Shadey.repositionMap );
+
+  },
+
+  repositionMap: function(position){
+    Shadey.map.setCenter(new LatLng(position.coords.latitude, position.coords.longitude));
   },
 
   retrieveMarkers: function(){
