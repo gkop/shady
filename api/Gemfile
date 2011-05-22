@@ -9,6 +9,9 @@ gem "sinatra-mongoid", :require => "sinatra/mongoid"
 # geolocation
 gem "geokit"
 
+# geolocation for mongoid
+gem "mongoid_geo", :git => "git://github.com/kristianmandrup/mongoid-geo.git"
+
 # sinatra asked for this
 gem "SystemTimer"
 

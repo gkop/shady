@@ -3,9 +3,11 @@ class User
   include Mongoid::Timestamps
 
   # make id a string rather than an objectID
-  field :id, :type => String
+  field :string_id, :type => String
 
   # identify models by string id
-  key :id
+  key :string_id
+
+  references_many :spots
 
 end
