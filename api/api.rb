@@ -9,10 +9,11 @@ require 'models/spot'
 
 # mark spot
 # POST /spots/mark?user=x&location={y}
-# returns header
+# returns 200 OK
 # TODO: see how google encodes location object
 
 post '/spots/mark' do
+  # TODO somehow authenticate user
   user_id = params[:user]
   latitude = params[:latitude]
   longitude = params[:longitude]
@@ -30,3 +31,7 @@ end
 # GET /users/:id/spots
 # returns JSON array of location objects
 
+get '/users/:id/spots' do
+  user = User.find(params[:id])
+  user.spots.to_json(:except => [ :created_at, :updated_at, '_id', :user_id ])
+end
