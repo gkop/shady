@@ -5,58 +5,19 @@
 
     <meta http-equiv="Content-type" content="text/html; charset=utf-8">
 
-	<!-- iPad/iPhone specific css below, add after your main css >
-	<link rel="stylesheet" media="only screen and (max-device-width: 1024px)" href="ipad.css" type="text/css" />		
-	<link rel="stylesheet" media="only screen and (max-device-width: 480px)" href="iphone.css" type="text/css" />		
-	-->
-	<!-- If you application is targeting iOS BEFORE 4.0 you MUST put json2.js from http://www.JSON.org/json2.js into your www directory and include it here -->
-	<script type="text/javascript" charset="utf-8" src="phonegap.0.9.5.min.js"></script>
-    <script type="text/javascript" charset="utf-8">
-
-
-	// If you want to prevent dragging, uncomment this section
-	/*
-	function preventBehavior(e) 
-	{ 
-      e.preventDefault(); 
-    };
-	document.addEventListener("touchmove", preventBehavior, false);
-	*/
-	
-	function onBodyLoad()
-	{
-		document.addEventListener("deviceready",onDeviceReady,false);
-	}
-	
-	/* When this function is called, PhoneGap has been initialized and is ready to roll */
-	function onDeviceReady()
-	{
-		 navigator.geolocation.getCurrentPosition(onSuccess, onErrormaximumAge: 3000, timeout: 5000, enableHighAccuracy: true );
-	}
-        
-    // onSuccess Geolocation
-    //
-    function onSuccess(position) {
-        var element = document.getElementById('geolocation');
-        element.innerHTML = 'Latitude: '           + position.coords.latitude              + '<br />' +
-            'Longitude: '          + position.coords.longitude             + '<br />' +
-            'Altitude: '           + position.coords.altitude              + '<br />' +
-            'Accuracy: '           + position.coords.accuracy              + '<br />' +
-            'Altitude Accuracy: '  + position.coords.altitudeAccuracy      + '<br />' +
-            'Heading: '            + position.coords.heading               + '<br />' +
-            'Speed: '              + position.coords.speed                 + '<br />' +
-            'Timestamp: '          + new Date(position.timestamp)          + '<br />';
-        }
-        
-    // onError Callback receives a PositionError object
-    //
-    function onError(error) {
-        alert('code: '    + error.code    + '\n' +
-                'message: ' + error.message + '\n');
-    }
-    </script>
+    <!-- iPad/iPhone specific css below, add after your main css >
+    <link rel="stylesheet" media="only screen and (max-device-width: 1024px)" href="ipad.css" type="text/css" />
+    <link rel="stylesheet" media="only screen and (max-device-width: 480px)" href="iphone.css" type="text/css" />
+    -->
+    <!-- If you application is targeting iOS BEFORE 4.0 you MUST put json2.js from http://www.JSON.org/json2.js into your www directory and include it here -->
+    <script type="text/javascript" charset="utf-8" src="phonegap.0.9.5.min.js"></script>
+    <script type="text/javascript" src="./jquery-1.6.1.min.js"></script>
+    <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
+    <script type="text/javascript" src="./shadey.js"></script>
   </head>
-  <body onload="onBodyLoad()">
-  	  <p id="geolocation">Finding geolocation...</p> 	
+  <body>
+    <a href="/save">Save</a>
+    <a href="./map.html">Find</a>
+    <a href="./map.html">Recents</a>
   </body>
 </html>
