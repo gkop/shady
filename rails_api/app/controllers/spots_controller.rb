@@ -1,6 +1,9 @@
 class SpotsController < ApplicationController
   respond_to :json
-  
+
+  # TODO solve authentication
+  protect_from_forgery :only => [] 
+ 
   def index
     user = User.find(params[:user_id])
     @spots = user.spots.desc(:created_at).limit(10)

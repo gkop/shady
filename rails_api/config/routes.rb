@@ -62,5 +62,8 @@ RailsApi::Application.routes.draw do
     resources :spots
   end
 
+  post '/spots/mark' => 'spots#create'
+  get '/users/:user_id/spots' => 'spots#index'
   resources :spots
+
 end
