@@ -4,14 +4,3 @@ Shady Parking
 http://shadyparkingapp.com/
 
 MIX Santa Fe Mobile Apps Challenge entry
-
-API server
-~~~~~~~~~~
-
-found in /api
-
-To bootstrap:
-  $ bundle install
-
-To start:
-  $ ruby api.rb
