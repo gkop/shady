@@ -4,7 +4,7 @@ class Spot
 
   field :location, :type => Array, :geo => true
 
- # geo_index :location
+  geo_index :location
 
   referenced_in :user
 

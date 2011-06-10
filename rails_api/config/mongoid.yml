@@ -1,6 +1,7 @@
 development:
   host: localhost
   database: rails_api_development
+  autocreate_indexes: true
 
 test:
   host: localhost
