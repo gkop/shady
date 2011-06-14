@@ -139,9 +139,9 @@ var Shadey = {
 
 };
 
-$(function(){
+$(document).ready(function(){
   Shadey.initialize();
-  if( $('map_canvas').length > 0 ){
+  if( $('#map_canvas').length > 0 ){
     Shadey.loadMap();
   }
 });
