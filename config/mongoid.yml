@@ -10,8 +10,8 @@ test:
 
 # set these environment variables on your prod server
 production:
-  host: <%= ENV['MONGOHQ_URL'] || 'mongodb://localhost/sushi' %>
-  database: rails_api_production
+#  host: <%= ENV['MONGOHQ_URL'] || 'mongodb://localhost/sushi' %>
+#  database: rails_api_production
   autocreate_indexes: true
 
   #port: <%= ENV['MONGOID_PORT'] %>
