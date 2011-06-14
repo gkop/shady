@@ -27,7 +27,7 @@ var Shadey = {
     $.ajax({
        type: "POST",
        url: "http://localhost:3000/users/" + Shadey.client_unique_id + "/spots",
-       data: "&lat=" + position.coords.latitude + "&lng=" + position.coords.latitude,
+       data: "&lat=" + position.coords.latitude + "&lng=" + position.coords.longitude,
        success: function(msg){
          Shadey.updateStatus('location saved');
        }
@@ -56,6 +56,9 @@ var Shadey = {
     Shadey.map = new google.maps.Map(document.getElementById("map_canvas"),
         myOptions);
 
+    Shadey.fusionLayer = new google.maps.FusionTablesLayer( 136705 );
+    Shadey.fusionLayer.setMap(Shadey.map);
+
     google.maps.event.addListener(Shadey.map, 'bounds_changed', function(event) {
       Shadey.retrieveMarkers();
     });
@@ -69,12 +72,18 @@ var Shadey = {
   },
 
   retrieveMarkers: function(){
-    console.log(Shadey.map.getBounds());
     var latLngBounds = Shadey.map.getBounds();
     var northEast = latLngBounds.getNorthEast();
     var southWest = latLngBounds.getSouthWest();
-    console.log('NorthEast: lat: ' + northEast.lat() + 'lng:' + northEast.lng());
-    console.log('SouthWest: lat: ' + southWest.lat() + 'lng:' + southWest.lng());
+    $.ajax({
+       type: "GET",
+       url: ("/spots?lat_b="+northEast.lat()+"&lng_b="+northEast.lng()+"&lat_a="+southWest.lat()+"&lng_a="+southWest.lng()),
+	   dataType: 'json',
+       success: function(data){
+         Shadey.drawMarkers(data);
+       }
+    });
+
 
   },
 
@@ -82,7 +91,16 @@ var Shadey = {
     $('p#status').text(message);
   },
 
-  drawMarkers: function(){
+  drawMarkers: function(data){
+    for( var spot in data ){
+      var loc = new String(data[spot]['location']);
+      loc = loc.split(',');
+      var latlng = new google.maps.LatLng(loc[0], loc[1]);
+      var marker = new google.maps.Marker({
+        position: latlng
+      });
+      marker.setMap(Shadey.map);
+    }
   },
 
   displayRecents: function(data){
@@ -123,4 +141,7 @@ var Shadey = {
 
 $(function(){
   Shadey.initialize();
+  if( $('map_canvas').length > 0 ){
+    Shadey.loadMap();
+  }
 });
