@@ -58,18 +58,12 @@ var Shadey = {
 
     Shadey.fusionLayer = new google.maps.FusionTablesLayer( 136705 );
     Shadey.fusionLayer.setMap(Shadey.map);
-
-    // Michael, will you throttle this?  I think it's freezing my firefox
-    google.maps.event.addListener(Shadey.map, 'bounds_changed', function(event) {
-      Shadey.retrieveMarkers();
-    });
-
     Shadey.get_geo( Shadey.repositionMap );
-
   },
 
   repositionMap: function(position){
     Shadey.map.setCenter(new google.maps.LatLng(position.coords.latitude, position.coords.longitude));
+    Shadey.retrieveMarkers();
   },
 
   retrieveMarkers: function(){

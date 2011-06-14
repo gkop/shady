@@ -1,0 +1,23 @@
+div.mark {
+  margin: 20px;
+  float: left;
+  width: 100px;
+  height: 100px;
+  background-image:url('../images/mark.png')
+}
+
+div.find {
+  margin: 20px;
+  float: right;
+  width: 100px;
+  height: 100px;
+  background-image:url('../images/find.png')
+}
+
+div.recents {
+  margin: 20px 20px 20px 60px;
+  clear:both;
+  width: 200px;
+  height: 58px;
+  background-image:url('../images/myspots.png')
+}
