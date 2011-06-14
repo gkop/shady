@@ -6,14 +6,18 @@ development:
 test:
   host: localhost
   database: rails_api_test
+  autocreate_indexes: true
 
 # set these environment variables on your prod server
 production:
-  host: <%= ENV['MONGOID_HOST'] %>
-  port: <%= ENV['MONGOID_PORT'] %>
-  username: <%= ENV['MONGOID_USERNAME'] %>
-  password: <%= ENV['MONGOID_PASSWORD'] %>
-  database: <%= ENV['MONGOID_DATABASE'] %>
+  host: <%= ENV['MONGOHQ_URL'] || 'mongodb://localhost/sushi' %>
+  database: rails_api_production
+  autocreate_indexes: true
+
+  #port: <%= ENV['MONGOID_PORT'] %>
+  #username: <%= ENV['MONGOID_USERNAME'] %>
+  #password: <%= ENV['MONGOID_PASSWORD'] %>
+  #database: <%= ENV['MONGOID_DATABASE'] %>
   # slaves:
   #   - host: slave1.local
   #     port: 27018
