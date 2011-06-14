@@ -26,7 +26,7 @@ var Shadey = {
     Shadey.updateStatus('saving your location');
     $.ajax({
        type: "POST",
-       url: "http://localhost:3000/users/" + Shadey.client_unique_id + "/spots",
+       url: Shadey.api_url+"/users/" + Shadey.client_unique_id + "/spots",
        data: "&lat=" + position.coords.latitude + "&lng=" + position.coords.longitude,
        success: function(msg){
          Shadey.updateStatus('location saved');
@@ -38,7 +38,7 @@ var Shadey = {
     Shadey.updateStatus('retrieving your recents');
     $.ajax({
        type: "GET",
-       url: "http://localhost:3000/users/" + Shadey.client_unique_id + "/spots",
+       url: Shadey.api_url+"/users/" + Shadey.client_unique_id + "/spots",
 	   dataType: 'json',
        success: function(data){
          Shadey.displayRecents(data);
@@ -59,6 +59,7 @@ var Shadey = {
     Shadey.fusionLayer = new google.maps.FusionTablesLayer( 136705 );
     Shadey.fusionLayer.setMap(Shadey.map);
 
+    // Michael, will you throttle this?  I think it's freezing my firefox
     google.maps.event.addListener(Shadey.map, 'bounds_changed', function(event) {
       Shadey.retrieveMarkers();
     });
@@ -77,7 +78,7 @@ var Shadey = {
     var southWest = latLngBounds.getSouthWest();
     $.ajax({
        type: "GET",
-       url: ("/spots?lat_b="+northEast.lat()+"&lng_b="+northEast.lng()+"&lat_a="+southWest.lat()+"&lng_a="+southWest.lng()),
+       url: (Shadey.api_url+"/spots?lat_b="+northEast.lat()+"&lng_b="+northEast.lng()+"&lat_a="+southWest.lat()+"&lng_a="+southWest.lng()),
 	   dataType: 'json',
        success: function(data){
          Shadey.drawMarkers(data);

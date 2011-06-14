@@ -1,4 +1,7 @@
 RailsApi::Application.routes.draw do
+  
+  root :to => "application#index"
+ 
   resources :users
 
   # The priority is based upon order of creation:

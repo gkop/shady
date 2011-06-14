@@ -10,6 +10,7 @@ gem 'bson_ext'
 gem "geokit"
 gem "mongoid_geo"
 gem 'heroku'
+gem 'haml'
 
 group :development, :test do
   gem 'ruby-debug19'
